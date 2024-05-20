@@ -140,7 +140,3 @@ button {
     color: white;
     border: none;
 }
-
-#cancelar-edicion:hover {
-    background-color: #c82333;
-}

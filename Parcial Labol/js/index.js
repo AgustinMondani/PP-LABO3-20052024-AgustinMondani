@@ -55,7 +55,7 @@ function onInit(){
         renderizarLista();
     }
 
-    function actuoalizarCrypt(crypto) {
+    function actualizarCrypto(crypto) {
         const cryptos = obtenerCryptos();
         const index = cryptos.findIndex(c => c.id === crypto.id);
         cryptos[index] = crypto;
@@ -141,7 +141,7 @@ function onInit(){
     eliminarTodosBtn.addEventListener('click', eliminarTodos);
     cancelarEdicionBtn.addEventListener('click', limpiarFormulario);
     
-    cancelarEdicionBtn.addEventListener('click', limpiarFormulario);
+    editId.addEventListener('click', limpiarFormulario);
 
     renderizarLista();
 };
