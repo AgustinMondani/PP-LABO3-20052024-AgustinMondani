@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="assets/logo.svg" />
+
+<link rel="stylesheet" href="/styles/index.css  ">
+
+    <script src="js/index.js" type="module" defer></script>
+    <title>Crypto</title>
+</head>
+<body>
+    <header class="flex">
+        <div class="navegador">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#">Nosotros</a></li>
+                    <li><a href="#">Anuncios</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <form id="crypto-form">
+            <fieldset>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="simbolo">Símbolo:</label>
+                <input type="text" id="simbolo" name="simbolo" required>
+
+                <label for="fechaCreacion">Fecha de Creación:</label>
+                <input type="date" id="fechaCreacion" name="fechaCreacion" required>
+
+                <label for="precioActual">Precio Actual:</label>
+                <input type="number" id="precioActual" name="precioActual" required>
+
+                <label for="tipoConsenso">Tipo de Consenso:</label>
+                <select id="tipoConsenso" name="tipoConsenso" required>
+                    <option value="Proof of Work">Proof of Work</option>
+                    <option value="Proof of Stake">Proof of Stake</option>
+                </select>
+
+                <label for="algoritmo">Algoritmo:</label>
+                <select id="algoritmo" name="algoritmo" required>
+                    <option value="SHA-256">SHA-256</option>
+                    <option value="Ethash">Ethash</option>
+                    <option value="Scrypt">Scrypt</option>
+                    <option value="X11">X11</option>
+                </select>
+
+                <button type="submit" id = "guardar">Guardar</button>
+                <button type="button" id="cancelar-edicion">Cancelar</button>
+            </fieldset>
+        </form>
+
+       <div id="spinner" class="spinner"></div>
+
+        <table id="crypto-table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Símbolo</th>
+                    <th>Fecha de Creación</th>
+                    <th>Precio Actual</th>
+                    <th>Tipo de Consenso</th>
+                    <th>Algoritmo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <button id="eliminar-todos">Eliminar Todos</button>
+    </main>
+
+    <footer>
+        <nav>
+          <ul class="footer-links">
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Anuncio</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+          <p>Todos los derechos reservados <date> 2000</date> &copy;</p>
+        </nav>
+  
+    </footer>
+
+</body>
+</html>
