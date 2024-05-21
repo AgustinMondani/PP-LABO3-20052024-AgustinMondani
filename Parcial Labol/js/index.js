@@ -164,6 +164,7 @@ function editarCrypto(id) {
     const crypto = cryptos.find(c => c.id === id);
     if (crypto) {
         cargarFormulario(crypto);
+        eliminarCrypto(id);
     }
 }
 
