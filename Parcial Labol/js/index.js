@@ -21,8 +21,8 @@ class Crypto extends CryptoBase {
 
 
 document.addEventListener('DOMContentLoaded', onInit);
-    
-function onInit(){
+
+function onInit() {
     const form = document.getElementById('crypto-form');
     const spinner = document.getElementById('spinner');
     const tableBody = document.querySelector('#crypto-table tbody');
@@ -31,7 +31,7 @@ function onInit(){
 
     let editando = false;
     let editId = null;
-    
+
     function mostrarSpinner() {
         spinner.style.display = 'block';
     }
@@ -98,12 +98,27 @@ function onInit(){
                     <td>${crypto.tipoConsenso}</td>
                     <td>${crypto.algoritmo}</td>
                     <td>
-                        <button onclick="editarCrypto('${crypto.id}')">Editar</button>
-                        <button onclick="eliminarCrypto('${crypto.id}')">Eliminar</button>
+                        <button class="editar-btn" data-id="${crypto.id}">Editar</button>
+                        <button class="eliminar-btn" data-id="${crypto.id}">Eliminar</button>
                     </td>
                 `;
                 tableBody.appendChild(row);
             });
+
+            document.querySelectorAll('.editar-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const id = e.target.getAttribute('data-id');
+                    editarCrypto(id);
+                });
+            });
+
+            document.querySelectorAll('.eliminar-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const id = e.target.getAttribute('data-id');
+                    eliminarCrypto(id);
+                });
+            });
+
             ocultarSpinner();
         }, 2500);
     }
@@ -120,12 +135,12 @@ function onInit(){
         const algoritmo = document.getElementById('algoritmo').value;
 
         const crypto = {
-            id, 
-            nombre, 
-            simbolo, 
-            fechaCreacion, 
-            precioActual, 
-            tipoConsenso, 
+            id,
+            nombre,
+            simbolo,
+            fechaCreacion,
+            precioActual,
+            tipoConsenso,
             algoritmo
         };
 
@@ -140,16 +155,16 @@ function onInit(){
 
     eliminarTodosBtn.addEventListener('click', eliminarTodos);
     cancelarEdicionBtn.addEventListener('click', limpiarFormulario);
-    
-    editId.addEventListener('click', limpiarFormulario);
 
     renderizarLista();
-};
+}
 
 function editarCrypto(id) {
     const cryptos = JSON.parse(localStorage.getItem('cryptos')) || [];
     const crypto = cryptos.find(c => c.id === id);
-    cargarFormulario(crypto);
+    if (crypto) {
+        cargarFormulario(crypto);
+    }
 }
 
 function cargarFormulario(crypto) {
@@ -161,4 +176,11 @@ function cargarFormulario(crypto) {
     document.getElementById('algoritmo').value = crypto.algoritmo;
     editando = true;
     editId = crypto.id;
+}
+
+function eliminarCrypto(id) {
+    const cryptos = JSON.parse(localStorage.getItem('cryptos')) || [];
+    const filtrados = cryptos.filter(c => c.id !== id);
+    guardarCryptos(filtrados);
+    renderizarLista();
 }
